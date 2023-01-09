@@ -6,16 +6,78 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>A Node.js app using the Express framework and searoute-js 
+    <p>A <a href="https://nodejs.org">Node.js</a> app using the 
+      <a href="https://expressjs.com">Express</a> framework and  
+      <a href="https://www.npmjs.com/package/searoute-js">searoute-js</a>
       to calculate the nearest sea route for two points on Earth.
     </p>
+    <img src="/images/map.png" alt="Google Maps">
     <h3>Clients</h3>
     <ul>
       <li>
-        <a href="https://btcellnet.z6.web.core.windows.net/maps">
-          JavaScript
+        <a href="https://btcellnet.z6.web.core.windows.net/sea-route-client">
+          Google Maps
         </a>   
       </li>
-    </ul>     
+    </ul>    
+    <h3>Test</h3> 
+    <p>
+      Using <a href="https://www.postman.com/">Postman</a>
+      POST a request body like the sample below
+      <a href="https://sea-route-server.azurewebsites.net/">here</a>      
+    </p>
+    <h3>Sample Request</h3>
+    <pre id="json">
+      {
+        "units": "miles",
+        "origin": {
+            "lat": 53.3498053,
+            "lng": -6.2603097
+        },
+        "destination": {
+            "lat": 53.4083714,
+            "lng": -2.9915726
+        }
+      }
+    </pre>
+    <h3>Sample Response</h3>    
+    <pre id="json">
+      {
+        "type": "Feature",
+        "properties": {
+            "units": "miles",
+            "length": 131.08475221404157
+        },
+        "geometry": {
+            "type": "LineString",
+            "coordinates": [
+                [
+                    -6.118943437633192,
+                    53.322116737034634
+                ],
+                [
+                    -5.7,
+                    53.4
+                ],
+                [
+                    -4.7,
+                    53.5
+                ],
+                [
+                    -3.4,
+                    53.6
+                ],
+                [
+                    -3.293876252709559,
+                    53.53901885390608
+                ],
+                [
+                    -3.06088102096328,
+                    53.44950017204057
+                ]
+            ]
+        }
+      }
+    </pre>
   </body>
 </html>

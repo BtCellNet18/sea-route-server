@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+#json {
+  border-radius: 10px;
+  background: black;
+  color: white;
+  padding: 10px;
+  width: 100%
+}

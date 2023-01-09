@@ -9,22 +9,31 @@ router.get('/', function(req, res, next) {
 
 /* POST */
 router.post('/', function(req, res, next) {
-  var origin = getGeoJson(req.body.origin);
-  var destination = getGeoJson(req.body.destination);
-  var units = req.body.units != '' ? req.body.units : 'nm';
-  var data = searoute(origin, destination, units);
+  var data = null;
+
+  try {
+    var units = req.body.units;
+    var origin = getGeoJson(req.body.origin);
+    var destination = getGeoJson(req.body.destination);
+
+    data = searoute(origin, destination, units);
+  }
+  catch(ex) {
+    console.log(ex.message);
+  }
+
   res.jsonp(data);
 });
 
-function getGeoJson(gps) {
+function getGeoJson(position) {
   return {
     "type": "Feature",
     "properties": {},
     "geometry": {
     "type": "Point",
     "coordinates": [
-      gps.lng,
-      gps.lat
+      position.lng,
+      position.lat
     ]
     }
   };
